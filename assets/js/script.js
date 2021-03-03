@@ -1,9 +1,27 @@
-getApi();
-getFiveDay();
+var weatherBtn = document.getElementById('weatherBtn');
+var city = document.getElementById('city');
+var cityName = document.getElementById('cityName');
+// var date = document.getElementById('date');
+var temperature = document.getElementById('temperature');
+var humidity = document.getElementById('humidity');
+var windSpeed = document.getElementById('windSpeed');
+var uvIndex = document.getElementById('uvIndex');
 
-function getApi() {
+weatherBtn.addEventListener('click', test);
 
-    var requestUrl = 'http://api.openweathermap.org/data/2.5/weather?q=London&appid=6228aa56dae01537d986f1962f109fb7';
+function test(event) {
+    event.preventDefault();
+    getApi(city.value);
+}
+
+
+
+// getApi('New York');
+// getFiveDay();
+
+function getApi(city) {
+
+    var requestUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=6228aa56dae01537d986f1962f109fb7`;
 
     fetch(requestUrl)
         .then(function (response) {
@@ -20,6 +38,10 @@ function getApi() {
             var icon = data.weather[0].icon;
             var lat = data.coord.lat;
             var lon = data.coord.lon;
+            cityName.textContent = city;
+            temperature.textContent = tempF;
+            humidity.textContent = humidity;
+            windSpeed.textContent = windSpeed;
             console.log(temp);
             console.log(tempF);
             console.log(tempC);
@@ -45,6 +67,7 @@ function getUv(lat, lon) {
             console.log(data);
             var uvIndex = data.value;
             console.log(uvIndex);
+            uvIndex.textContent = uvIndex;
         })
 };
 
