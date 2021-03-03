@@ -1,0 +1,35 @@
+:root {
+    --blue: #2980b9;
+    --lightblue: #3498db;
+    --light: #ecf0f1;
+    --darkblue: #2c3e50;
+    --red: #e74c3c;
+}
+
+body {
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 400;
+    background-color: var(--light);
+    color: var(--darkblue);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+header {
+    background-color: var(--darkblue);
+    color: var(--light);
+    height: 100px;
+}
+
+h1 {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100px;
+}
