@@ -10,7 +10,7 @@ weatherBtn.addEventListener('click', getWeather);
 
 function getWeather(event) {
     event.preventDefault();
-    getApi(city.value);
+    getApi(city.value); // capitalize first letter
     // create hotlink that triggers getApi with city so we don't get duplicates of the same city
 }
 
@@ -33,7 +33,7 @@ function getApi(city) {
             var lat = data.coord.lat;
             var lon = data.coord.lon;
             cityName.textContent = city + " " + moment().format('(M/DD/YYYY)');
-            temperature.textContent = tempF + "F";
+            temperature.innerHTML = tempF + "&nbsp;&#176;F";
             humidity.textContent = humidityText + "%";
             windSpeed.textContent = windSpeedText + " MPH";
             getUv(lat, lon);
@@ -72,7 +72,7 @@ function getFiveDay(lat, lon) {
                 var temp = data.daily[i].temp.day;
                 var tempF = (1.8 * (temp - 273) + 32).toFixed(1);
                 var tempText = document.getElementById(`temp${i}`);
-                tempText.textContent = tempF + "F";
+                tempText.innerHTML = tempF + "&nbsp;&#176;F";
                 var humidity = data.daily[i].humidity;
                 var humidityText = document.getElementById(`humidity${i}`);
                 humidityText.textContent = humidity + "%";
