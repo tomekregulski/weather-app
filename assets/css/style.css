@@ -10,7 +10,6 @@ body {
     font-family: 'Fira Sans', sans-serif;
     font-weight: 400;
     background-color: var(--light);
-    color: var(--darkblue);
 }
 
 h1,
@@ -32,4 +31,25 @@ h1 {
     text-align: center;
     vertical-align: middle;
     line-height: 100px;
+}
+
+@keyframes slide {
+    from {
+        transform: translateY(-100%);
+      }
+    
+      to {
+        transform: translateY(0%);
+      }
+    }
+
+#forecasts {
+    /* position: relative; */
+    /* animation: .5s ease-out 0s 1 slide; */
+    display: none;
+}
+
+#forecasts.show {
+    animation: .5s ease-out 0s 1 slide;
+    display: block;
 }

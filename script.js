@@ -14,8 +14,12 @@ function getWeather(event) {
     event.preventDefault();
     getApi(city.value); // capitalize first letter
     saveCity(city.value);
-    // create hotlink that triggers getApi with city so we don't get duplicates of the same city
+    displayWeather();
 }
+
+function displayWeather() {
+    $('#forecasts').addClass('show');
+};
 
 function getApi(city) {
 
@@ -43,7 +47,6 @@ function getApi(city) {
             windSpeed.textContent = windSpeedText + " MPH";
             getUv(lat, lon);
             getFiveDay(lat, lon);
-            // weather icon
         })
 };
 
@@ -79,7 +82,7 @@ function getFiveDay(lat, lon) {
         .then(function (response) {
             return response.json();
         })
-        .then (function (data) {;
+        .then (function (data) {
             for (var i = 1; i < 6; i++) {
                 console.log(data);
                 var date = moment.unix(`${data.daily[i].dt}`).format("M/DD/YYYY");
@@ -99,6 +102,7 @@ function getFiveDay(lat, lon) {
                 var iconDailyAppend = document.createElement('img');            
                 iconDailyAppend.setAttribute('src', iconDailyUrl);
                 iconDailyDiv.appendChild(iconDailyAppend);
+                // how to remove previous image
             }
         })
 };
@@ -107,20 +111,13 @@ function saveCity(city) {
     createCity(city);
     function createCity(city) {
         var cityName = city;
-        var savedCity = document.createElement('li');
         var savedCityButton = document.createElement('button');
         savedCityButton.innerText = cityName;
-        savedCity.setAttribute('class', 'list-group-item');
-        savedCityButton.setAttribute('class', 'btn btn-light');
+        savedCityButton.setAttribute('class', 'btn btn-block btn-light text-left border');
         savedCityButton.setAttribute('type', 'button');
-        // savedCityButton.setAttribute('id', cityName);
-        // id = `#${cityName}`;
-        // btnClass = document.getElementsByClassName('btn-light');
-        savedCities.appendChild(savedCity);
-        savedCity.appendChild(savedCityButton);
+        savedCities.appendChild(savedCityButton);
         savedCityButton.addEventListener('click', weatherLink);
     }
-    
 };
 
 function weatherLink() {
