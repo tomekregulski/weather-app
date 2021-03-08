@@ -1,4 +1,5 @@
 var weatherBtn = document.getElementById('weatherBtn');
+var clearBtn = document.getElementById('clearBtn');
 var city = document.getElementById('city');
 var cityName = document.getElementById('cityName');
 var temperature = document.getElementById('temperature');
@@ -12,6 +13,7 @@ var iconDailyAppend;
 var savedCitiesArray = JSON.parse(localStorage.getItem("savedCities")) || [];
 
 weatherBtn.addEventListener('click', getWeather);
+clearBtn.addEventListener('click', clearCities);
 
 loadSavedCities();
 
@@ -25,6 +27,10 @@ function loadSavedCities() {
         savedCityButton.addEventListener('click', weatherLink);
     }
 };
+
+function clearCities() {
+    localStorage.clear();
+}
 
 function getWeather(event) {
     event.preventDefault();
@@ -123,18 +129,23 @@ function saveCity(city) {
     createCity(city);
     function createCity(city) {
         var cityName = city;
-        savedCitiesArray.push(cityName);
-        localStorage.setItem("savedCities", JSON.stringify(savedCitiesArray));
-        var savedCityButton = document.createElement('button');
-        savedCityButton.innerText = cityName;
-        savedCityButton.setAttribute('class', 'btn btn-block btn-light text-left border');
-        savedCityButton.setAttribute('type', 'button');
-        savedCities.appendChild(savedCityButton);
-        savedCityButton.addEventListener('click', weatherLink);
+        if (!savedCitiesArray.includes(cityName)) {
+            console.log(savedCitiesArray);
+            savedCitiesArray.push(cityName);
+            localStorage.setItem("savedCities", JSON.stringify(savedCitiesArray));
+            var savedCityButton = document.createElement('button');
+            savedCityButton.innerText = cityName;
+            savedCityButton.setAttribute('class', 'btn btn-block btn-light text-left border');
+            savedCityButton.setAttribute('type', 'button');
+            savedCities.appendChild(savedCityButton);
+            savedCityButton.addEventListener('click', weatherLink);
+            
+        }
     }
 };
 
 function weatherLink() {
     var cityLink = this.textContent;
     getApi(cityLink);
+    displayWeather();
 };
