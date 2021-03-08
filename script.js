@@ -7,8 +7,24 @@ var windSpeed = document.getElementById('windSpeed');
 var uvIndex = document.getElementById('uvIndex');
 var savedCities = document.getElementById('savedCities');
 var btnClass;
+var iconDailyDiv;
+var iconDailyAppend;
+var savedCitiesArray = JSON.parse(localStorage.getItem("savedCities")) || [];
 
 weatherBtn.addEventListener('click', getWeather);
+
+loadSavedCities();
+
+function loadSavedCities() {
+    for (var i = 0; i < savedCitiesArray.length; i++) {
+        var savedCityButton = document.createElement('button');
+        savedCityButton.innerText = savedCitiesArray[i];
+        savedCityButton.setAttribute('class', 'btn btn-block btn-light text-left border');
+        savedCityButton.setAttribute('type', 'button');
+        savedCities.appendChild(savedCityButton);
+        savedCityButton.addEventListener('click', weatherLink);
+    }
+};
 
 function getWeather(event) {
     event.preventDefault();
@@ -84,7 +100,6 @@ function getFiveDay(lat, lon) {
         })
         .then (function (data) {
             for (var i = 1; i < 6; i++) {
-                console.log(data);
                 var date = moment.unix(`${data.daily[i].dt}`).format("M/DD/YYYY");
                 var dateText = document.getElementById(`date${i}`);
                 dateText.textContent = date;
@@ -95,14 +110,11 @@ function getFiveDay(lat, lon) {
                 var humidity = data.daily[i].humidity;
                 var humidityText = document.getElementById(`humidity${i}`);
                 humidityText.textContent = humidity + "%";
-                var iconDailyDiv = document.getElementById(`icon${i}`)
+                iconDailyDiv = document.getElementById(`icon${i}`)
                 var iconDaily = data.daily[i].weather[0].icon;
-                console.log(iconDaily);
-                var iconDailyUrl = "http://openweathermap.org/img/w/" + iconDaily + ".png";
-                var iconDailyAppend = document.createElement('img');            
-                iconDailyAppend.setAttribute('src', iconDailyUrl);
-                iconDailyDiv.appendChild(iconDailyAppend);
-                // how to remove previous image
+                var iconDailyUrl = "http://openweathermap.org/img/w/" + iconDaily + ".png";        
+                iconDailyDiv.setAttribute('src', iconDailyUrl);
+                iconDailyDiv.innerHTML = `src=${iconDailyUrl}`;
             }
         })
 };
@@ -111,6 +123,8 @@ function saveCity(city) {
     createCity(city);
     function createCity(city) {
         var cityName = city;
+        savedCitiesArray.push(cityName);
+        localStorage.setItem("savedCities", JSON.stringify(savedCitiesArray));
         var savedCityButton = document.createElement('button');
         savedCityButton.innerText = cityName;
         savedCityButton.setAttribute('class', 'btn btn-block btn-light text-left border');
@@ -121,8 +135,6 @@ function saveCity(city) {
 };
 
 function weatherLink() {
-    console.log('hello');
-    console.log(this.textContent);
     var cityLink = this.textContent;
     getApi(cityLink);
 };
