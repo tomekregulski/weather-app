@@ -57,7 +57,7 @@ function getApi(city) {
             var humidityText = data.main.humidity;
             var windSpeedText = (data.wind.speed).toFixed(1);
             var icon = data.weather[0].icon;
-            var iconUrl = "http://openweathermap.org/img/w/" + icon + ".png";
+            var iconUrl = "https://openweathermap.org/img/w/" + icon + ".png";
             var iconAppend = document.createElement('img');
             var lat = data.coord.lat;
             var lon = data.coord.lon;
@@ -82,7 +82,6 @@ function getUv(lat, lon) {
         .then (function (data) {
             var uvIndexText = data.value;
             uvIndex.textContent = uvIndexText;
-            console.log(uvIndexText);
             if (uvIndexText < 2) {
                 uvIndex.setAttribute('class', 'badge badge-success h6 p-2');
             } else if (uvIndexText < 5) {
@@ -104,7 +103,6 @@ function getFiveDay(lat, lon) {
             return response.json();
         })
         .then (function (data) {
-            console.log(data);
             for (var i = 1; i < 6; i++) {
                 var date = moment.unix(`${data.daily[i].dt}`).format("M/DD/YYYY");
                 var dateText = document.getElementById(`date${i}`);
@@ -118,7 +116,7 @@ function getFiveDay(lat, lon) {
                 humidityText.textContent = humidity + "%";
                 iconDailyDiv = document.getElementById(`icon${i}`)
                 var iconDaily = data.daily[i].weather[0].icon;
-                var iconDailyUrl = "http://openweathermap.org/img/w/" + iconDaily + ".png";        
+                var iconDailyUrl = "https://openweathermap.org/img/w/" + iconDaily + ".png";        
                 iconDailyDiv.setAttribute('src', iconDailyUrl);
                 iconDailyDiv.innerHTML = `src=${iconDailyUrl}`;
             }
@@ -130,7 +128,6 @@ function saveCity(city) {
     function createCity(city) {
         var cityName = city;
         if (!savedCitiesArray.includes(cityName)) {
-            console.log(savedCitiesArray);
             savedCitiesArray.push(cityName);
             localStorage.setItem("savedCities", JSON.stringify(savedCitiesArray));
             var savedCityButton = document.createElement('button');
@@ -139,7 +136,6 @@ function saveCity(city) {
             savedCityButton.setAttribute('type', 'button');
             savedCities.appendChild(savedCityButton);
             savedCityButton.addEventListener('click', weatherLink);
-            
         }
     }
 };
