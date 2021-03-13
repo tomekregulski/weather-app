@@ -45,7 +45,7 @@ function displayWeather() {
 
 function getApi(city) {
 
-    var requestUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=6228aa56dae01537d986f1962f109fb7`;
+    var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=6228aa56dae01537d986f1962f109fb7`;
 
     fetch(requestUrl)
         .then(function (response) {
@@ -73,7 +73,7 @@ function getApi(city) {
 };
 
 function getUv(lat, lon) {
-    var requestUrl = `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=6228aa56dae01537d986f1962f109fb7`;
+    var requestUrl = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=6228aa56dae01537d986f1962f109fb7`;
 
     fetch(requestUrl)
         .then(function (response) {
