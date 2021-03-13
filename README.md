@@ -1,7 +1,5 @@
 # weather-app
 
-# day-planner
-
 * [Description ](#description)
 * [What I Learned](#what-i-learned)
 * [Installation and Usage](#installation-and-use)
@@ -11,7 +9,7 @@
 
 # Description
 
-This is a simple weather app that makes use of the Open Weather API and accepts the input of any city in the world and will return the current weather (temperature, humidity, wind speed, and UV Index), as well as the 5-day forecast, displaying the temperature and humidity. In addition to these data points, an icon reflecting the general forecast for that day is shown, and the UV Index is displayed inside a badge that displays a color reflective of the level of severity. 
+This is a simple weather app that makes use of the Open Weather API return the current weather (temperature, humidity, wind speed, and UV Index), as well as the 5-day forecast (displaying the temperature and humidity), when a user search a city. In addition to these data points, an icon reflecting the general forecast for that day is shown, and the UV Index is displayed inside a badge that displays a color reflective of the level of severity. 
 
 When cities are searched, they are entered into a column below the search field that shows recent searches, and allows the user to click back to them. These recent searches are saved to localStorage, and will load on future visits to the page. 
 
@@ -20,7 +18,9 @@ This page has been deployed on Github, and can be viewed here: https://tomekregu
 
 # What I Learned
 
-This exercise helped solidify my understanding of the basics of working with APIs and extracting specific data points from their responses, and furhter solidified my understanding of creating a dynamic page that uses local storage to create a continuous experience for the user, and how this all comes together to create a more useful app for the user. 
+This exercise helped solidify my understanding of the basics of working with APIs and extracting specific data points from their responses, and further solidified my understanding of creating a dynamic page that uses local storage to create a continuous experience for the user, and how this all comes together to create a more useful app.
+
+This all took a lot of time to sort out and get working properly, so I was not able to spend quite as much time on the styling as I had hoped. It looks fine on most browser windows, but is not mobile-friendly. I hope to go back and work on this app further to see how I might rearrange things for smaller screens, and add a bit more elegance to it overall. 
 
 # Installation and Use
 

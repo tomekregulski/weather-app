@@ -34,7 +34,7 @@ function clearCities() {
 
 function getWeather(event) {
     event.preventDefault();
-    getApi(city.value); // capitalize first letter
+    getApi(city.value);
     saveCity(city.value);
     displayWeather();
 }
@@ -83,7 +83,6 @@ function getUv(lat, lon) {
             var uvIndexText = data.value;
             uvIndex.textContent = uvIndexText;
             console.log(uvIndexText);
-            console.log('hello');
             if (uvIndexText < 2) {
                 uvIndex.setAttribute('class', 'badge badge-success h6 p-2');
             } else if (uvIndexText < 5) {
@@ -105,6 +104,7 @@ function getFiveDay(lat, lon) {
             return response.json();
         })
         .then (function (data) {
+            console.log(data);
             for (var i = 1; i < 6; i++) {
                 var date = moment.unix(`${data.daily[i].dt}`).format("M/DD/YYYY");
                 var dateText = document.getElementById(`date${i}`);
