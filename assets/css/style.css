@@ -9,7 +9,12 @@
 body {
     font-family: 'Fira Sans', sans-serif;
     font-weight: 400;
-    background-color: var(--light);
+    /* background-color: var(--light); */
+    background: url("../images/pacific.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    color: white;
 }
 
 h1,
@@ -22,7 +27,6 @@ h6 {
 }
 
 header {
-    background-color: var(--darkblue);
     color: var(--light);
     height: 100px;
 }
