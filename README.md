@@ -5,7 +5,8 @@
 * [Installation and Usage](#installation-and-use)
 * [License](#license)
 
-![homepage main](assets/images/demo.png)
+![homepage main](assets/images/demo1.png)
+![homepage main](assets/images/demo2.png)
 
 # Description
 
