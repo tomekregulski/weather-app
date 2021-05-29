@@ -21,6 +21,7 @@ const resourcesToPrecache = [
     'index.html',
     'assets/css/style.css',
     'assets/images/pacific.jpg',
+    'assets/images/icon-720x720.png',
 ];
 
 self.addEventListener('install', event => {

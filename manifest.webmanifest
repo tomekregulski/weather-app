@@ -3,7 +3,7 @@
   "name": "Weather App",
   "icons": [
     {
-      "src": "/assets/images/icon-720x720.png",
+      "src": "./assets/images/icon-720x720.png",
       "sizes": "720x720",
       "type": "image/png"
     }
