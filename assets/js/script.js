@@ -145,3 +145,31 @@ function weatherLink() {
     getApi(cityLink);
     displayWeather();
 };
+
+let defferedPrompt;
+const btnAdd = document.querySelector('.add-button');
+btnAdd.setAttribute('class', 'btn btn-sm mt-4 ml-4');
+btnAdd.setAttribute('style', 'background-color: rgb(83, 163, 206); color: white; position: absolute; top: 1px; left: 1px;');
+btnAdd.style.display = 'none';
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    btnAdd.style.display = 'block';
+
+    btnAdd.addEventListener('click', (e) => {
+        btnAdd.style.display = 'none';
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the A2HS prompt');
+            } else {
+                console.log("User dismissed the A2HS prompt");
+            }
+            deferredPrompt = null;
+        })
+    })
+})
+
+window.addEventListener('appinstalled', (evt) => {
+    applicationCache.logEvent('a2hs', 'isntalled');
+})

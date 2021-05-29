@@ -1,20 +1,20 @@
 :root {
-    --blue: #2980b9;
-    --lightblue: #3498db;
-    --light: #ecf0f1;
-    --darkblue: #2c3e50;
-    --red: #e74c3c;
+  --blue: #2980b9;
+  --lightblue: #3498db;
+  --light: #ecf0f1;
+  --darkblue: #2c3e50;
+  --red: #e74c3c;
 }
 
 body {
-    font-family: 'Fira Sans', sans-serif;
-    font-weight: 400;
-    /* background-color: var(--light); */
-    background: url("../images/pacific.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    color: white;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 400;
+  /* background-color: var(--light); */
+  background: url('../images/pacific.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  color: white;
 }
 
 h1,
@@ -27,44 +27,44 @@ h6 {
 }
 
 header {
-    color: var(--light);
-    height: 100px;
+  color: var(--light);
+  height: 100px;
 }
 
 h1 {
-    text-align: center;
-    vertical-align: middle;
+  text-align: center;
+  vertical-align: middle;
 }
 
 @keyframes slide {
-    0% {
-        transform: translateY(-100%);
-      }
-    
-    50% {
-        transform: translateY(15%);
-      }
-    65% {
-        transform: translateY(-15%);
-    }
-    75% {
-        transform: translateY(0%);
-    }
-    90% {
-        transform: translateY(-8%);
-    }
-    100% {
-        transform: translateY(0%);
-      }
+  0% {
+    transform: translateY(-100%);
+  }
+
+  50% {
+    transform: translateY(15%);
+  }
+  65% {
+    transform: translateY(-15%);
+  }
+  75% {
+    transform: translateY(0%);
+  }
+  90% {
+    transform: translateY(-8%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
 }
 
 #forecasts {
-    /* position: relative; */
-    /* animation: .5s ease-out 0s 1 slide; */
-    display: none;
+  /* position: relative; */
+  /* animation: .5s ease-out 0s 1 slide; */
+  display: none;
 }
 
 #forecasts.show {
-    animation: .3s ease-out 0s 1 slide;
-    display: block;
+  animation: 0.3s ease-out 0s 1 slide;
+  display: block;
 }
