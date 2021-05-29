@@ -17,7 +17,8 @@ self.addEventListener('fetch', event => {
 
 const cacheName = 'cahce-v1';
 const resourcesToPrecache = [
-    './',
+    'https://tomekregulski.github.io/weather-app/',
+    "./"
     'index.html',
     'assets/css/style.css',
     'assets/images/pacific.jpg',
