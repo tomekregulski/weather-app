@@ -4,8 +4,7 @@
 - [Installation and Usage](#installation-and-use)
 - [License](#license)
 
-![screenshot-before-search](assets/images/demo1.png)
-![screenshot-after-search](assets/images/demo2.png)
+![screenshot-before-search](assets/images/weather-demo.png)
 
 # Description
 
